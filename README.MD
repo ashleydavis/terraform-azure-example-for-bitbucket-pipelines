@@ -1,4 +1,4 @@
-# terraform-example-for-bitbucket-pipelines
+# terraform-azure-example-for-bitbucket-pipelines
 
 An example of infrastructure as code that provisions Azure infrastructure using Terraform through Bitbucket Pipelines.
 
