@@ -1,0 +1,17 @@
+# This is a sample build configuration for Docker.
+# Check our guides at https://confluence.atlassian.com/x/O1toN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: hashicorp/terraform:light
+
+pipelines:
+  default:
+    - step:
+        script:
+          - terraform --version 
+          - cd scripts/infrastructure
+          - ls
+          - terraform init  -backend-config="resource_group_name=$TF_BACKEND_RES_GROUP" -backend-config="storage_account_name=$TF_BACKEND_STORAGE_ACC" -backend-config="container_name=$TF_BACKEND_CONTAINER" -backend-config="key=$TF_BACKEND_KEY"
+          - terraform validate
+          - terraform apply -auto-approve
